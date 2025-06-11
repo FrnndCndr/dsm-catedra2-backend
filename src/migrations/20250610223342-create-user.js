@@ -15,6 +15,14 @@ module.exports = {
         unique: true
       },
       password: Sequelize.STRING,
+      roleId: { 
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'role',
+          key: 'roleId' 
+        }
+      },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE
     });
