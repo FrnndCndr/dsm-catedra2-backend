@@ -7,6 +7,7 @@ const path    = require("path");
 const sequelize = require("./database/sequelize");
 
 const authRoutes = require("../routes/auth/auth.routes");
+const userRoutes = require("../routes/user/user.routes");
 
 class Server {
   constructor() {
@@ -15,6 +16,7 @@ class Server {
     this.port = process.env.PORT || 3000;
     this.paths = {
       auth: "/api/auth",
+      user: "/api/user",
     };
 
     this.dbConnection();
@@ -51,6 +53,7 @@ class Server {
       res.json({ message: "API running" });
     });
     this.app.use(this.paths.auth, authRoutes);
+    this.app.use(this.paths.user, userRoutes);
   }
 
   listen() {
