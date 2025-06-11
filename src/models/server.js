@@ -6,13 +6,15 @@ const logger  = require("morgan");
 const path    = require("path");
 const sequelize = require("./database/sequelize");
 
+const authRoutes = require("../routes/auth/auth.routes");
+
 class Server {
   constructor() {
     console.log("Iniciando Server class");
     this.app  = express();
     this.port = process.env.PORT || 3000;
     this.paths = {
-
+      auth: "/api/auth",
     };
 
     this.dbConnection();
@@ -48,6 +50,7 @@ class Server {
     this.app.get("/", (req, res) => {
       res.json({ message: "API running" });
     });
+    this.app.use(this.paths.auth, authRoutes);
   }
 
   listen() {
