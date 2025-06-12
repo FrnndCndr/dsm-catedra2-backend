@@ -13,7 +13,34 @@ module.exports = {
         roleId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
-      }
+      },
+      {
+        name: 'Fernando',
+        lastName: 'Condori',
+        email: 'fernando.condori01@alumnos.ucn.cl',
+        password: bcrypt.hashSync('fernando123', salt),
+        roleId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Cliente',
+        lastName: '1',
+        email: 'Cliente1@example.com',
+        password: bcrypt.hashSync('test123', salt),
+        roleId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Cliente',
+        lastName: '2',
+        email: 'Cliente2@example.com',
+        password: bcrypt.hashSync('test123', salt),
+        roleId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 
