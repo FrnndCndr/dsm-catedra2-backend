@@ -8,6 +8,8 @@ const sequelize = require("./database/sequelize");
 
 const authRoutes = require("../routes/auth/auth.routes");
 const userRoutes = require("../routes/user/user.routes");
+const bookRoutes = require("../routes/book/book.routes");
+const loanRoutes = require("../routes/loan/loan.routes");
 
 class Server {
   constructor() {
@@ -17,6 +19,8 @@ class Server {
     this.paths = {
       auth: "/api/auth",
       user: "/api/user",
+      book: "/api/book",
+      loan: "/api/loan",
     };
 
     this.dbConnection();
@@ -54,6 +58,8 @@ class Server {
     });
     this.app.use(this.paths.auth, authRoutes);
     this.app.use(this.paths.user, userRoutes);
+    this.app.use(this.paths.book, bookRoutes);
+    this.app.use(this.paths.loan, loanRoutes);
   }
 
   listen() {
