@@ -14,6 +14,10 @@ const login = async (req, res) => {
       return res.status(400).json({ msg: "Email y contraseña son obligatorios" });
     }
 
+    if (!validator.isEmail(email)) {
+      return res.status(400).json({ msg: "Correo electrónico inválido" });
+    }
+
     const user_ = await user.findOne({
       where: { email },
       include: { association: "role" }
@@ -61,6 +65,10 @@ const register = async (req, res) => {
       return res.status(400).json({ msg: "Todos los campos son obligatorios" });
     }
 
+    if (name.length < 2 || lastName.length < 2) {
+      return res.status(400).json({ msg: "Nombre y apellido deben tener al menos 2 caracteres" });
+    }
+
     if (!validator.isEmail(email)) {
       return res.status(400).json({ msg: "Correo electrónico inválido" });
     }
@@ -95,7 +103,6 @@ const register = async (req, res) => {
     return res.status(500).json({ msg: "Error en el servidor" });
   }
 };
-
 
 module.exports = {
   login,
