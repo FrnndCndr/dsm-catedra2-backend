@@ -23,11 +23,11 @@ router.post("/loan", accessRole(1), createLoan);
 router.get("/loans", accessRole(1, 2), getAllLoan);
 //GET /loans/users/:usuario_id → ver préstamos por usuario
 //● El usuario registrado puede visualizar los libros prestados por usuario.
-router.get("/loans/users/:usuario_id", accessRole(1, 2), getLoanByUserId);
+router.get("/loans/users/:usuario_id", accessRole(1), getLoanByUserId);
 
 //PUT /loan/return/:id/ → marcar como devuelto
 //● El usuario registrado puede generar la devolución de un libro prestado.
 //● Se debe cambiar el estado del préstamo a devuelto. En caso de que la devolución sea tardía, se debe cambiar el estado a “con retraso”.
-router.put("/loan/return/:id", accessRole(1, 2), returnBook);
+router.put("/loan/return/:id", accessRole(1), returnBook);
 
 module.exports = router;
